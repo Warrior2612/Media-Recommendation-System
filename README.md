@@ -23,11 +23,6 @@ based on the rating, tries to improve the recommendations further.
     <a href="https://github.com/Warrior2612/Stock-Market-Data-Visualiser"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/Warrior2612/Stock-Market-Data-Visualiser">View Demo</a>
-    ·
-    <a href="https://github.com/Warrior2612/Stock-Market-Data-Visualiser/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/Warrior2612/Stock-Market-Data-Visualiser/issues">Request Feature</a>
   </p>
 </p>
 
@@ -43,14 +38,6 @@ based on the rating, tries to improve the recommendations further.
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
     <li><a href="#contributing">Contributions</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
