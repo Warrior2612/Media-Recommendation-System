@@ -15,7 +15,10 @@
   <h3 align="center">Media Recommendation System</h3>
 
   <p align="center">
-    A Project that scrapes the web for financial data like stocks and visualizes the data through graphs!
+    Our recommendation system takes user's media consumption data such as previously watched
+movies, tv shows, etc, and their likes and dislikes and based on this data it recommends similar
+media that the user may like. It then allows the user to rate the recommendations and
+based on the rating, tries to improve the recommendations further.
     <br />
     <a href="https://github.com/Warrior2612/Stock-Market-Data-Visualiser"><strong>Explore the docs »</strong></a>
     <br />
