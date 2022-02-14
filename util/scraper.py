@@ -1,7 +1,7 @@
-import requests
-import pandas as pd
 from bs4 import BeautifulSoup
-
+import requests
+import re
+ 
 class Scraper:
     """
     Scraper Class: It handles the main functionality of scraping data in form of tables from the given url
@@ -22,19 +22,52 @@ class Scraper:
         Parameters:
         - URL: A String containing url of website to scrape.
         """
-        soup = BeautifulSoup(requests.get(url).text, features="html.parser")
-        headers = [header.text for listing in soup.find_all('thead') for header in listing.find_all('th')]
-        raw_data = {header:[] for header in headers}
-
-        for rows in soup.find_all('tbody'):
-            for row in rows.find_all('tr'):
-                if len(row) != len(headers): continue
-                for idx, cell in enumerate(row.find_all('td')):
-                    raw_data[headers[idx]].append(cell.text)
-
-        return pd.DataFrame(raw_data)[:90]
+        # Downloading imdb top 250 movie's data
+        response = requests.get(url)
+        soup = BeautifulSoup(response.text, 'lxml')
+        
+        movies = soup.select('td.titleColumn')
+        links = [a.attrs.get('href') for a in soup.select('td.titleColumn a')]
+        crew = [a.attrs.get('title') for a in soup.select('td.titleColumn a')]
+        
+        ratings = [b.attrs.get('data-value')
+                for b in soup.select('td.posterColumn span[name=ir]')]
+        
+        votes = [b.attrs.get('data-value')
+                for b in soup.select('td.ratingColumn strong')]
+        
+        list = []
+        
+        # create a empty list for storing
+        # movie information
+        list = []
+        
+        # Iterating over movies to extract
+        # each movie's details
+        for index in range(0, len(movies)):
+            
+            # Separating  movie into: 'place',
+            # 'title', 'year'
+            movie_string = movies[index].get_text()
+            movie = (' '.join(movie_string.split()).replace('.', ''))
+            movie_title = movie[len(str(index))+1:-7]
+            year = re.search('\((.*?)\)', movie_string).group(1)
+            place = movie[:len(str(index))-(len(movie))]
+            data = {"movie_title": movie_title,
+                    "year": year,
+                    "place": place,
+                    "star_cast": crew[index],
+                    "rating": ratings[index],
+                    "vote": votes[index],
+                    "link": links[index]}
+            list.append(data)
+        
+        # printing movie details with its rating.
+        for movie in list:
+            print(movie['place'], '-', movie['movie_title'], '('+movie['year'] +
+                ') -', 'Starring:', movie['star_cast'], movie['rating'])
 
 if __name__ == '__main__':
-    scr = Scraper()
-    print("\nTop 250 IMDB Movies:")
-    print(scr.scrape_table("https://www.imdb.com/chart/top/"))
+    url = 'http://www.imdb.com/chart/top'
+    scr = Scraper();
+    scr.scrape_table(url)
