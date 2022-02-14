@@ -4,3 +4,5 @@ numpy==1.20.3
 pandas
 flask
 mysql-connector-python
+html5lib
+lxml
