@@ -20,8 +20,6 @@ movies, tv shows, etc, and their likes and dislikes and based on this data it re
 media that the user may like. It then allows the user to rate the recommendations and
 based on the rating, tries to improve the recommendations further.
     <br />
-    <a href="https://github.com/Warrior2612/Stock-Market-Data-Visualiser"><strong>Explore the docs »</strong></a>
-    <br />
     <br />
   </p>
 </p>
