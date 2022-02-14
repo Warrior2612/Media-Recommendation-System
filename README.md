@@ -56,11 +56,11 @@ based on the rating, tries to improve the recommendations further.
 ### Built With
 
 * [Python](https://www.python.org/)
-* [Flask]
-* [MySQL]
-* [HTML]
-* [CSS]
-* [Javascript]
+* [Flask](https://flask.palletsprojects.com/en/2.0.x/)
+* [MySQL](https://www.mysql.com/)
+* HTML
+* CSS
+* Javascript
 
 <!-- CONTRIBUTING -->
 ## Contributions
