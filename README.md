@@ -24,8 +24,6 @@ based on the rating, tries to improve the recommendations further.
   </p>
 </p>
 
-
-
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
@@ -42,14 +40,12 @@ based on the rating, tries to improve the recommendations further.
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-**KJ Somaiya College SY BTECH MiniProject**
+**KJ Somaiya College of Engineering SY BTECH SEM-III MiniProject**
 
 ### Built With
 
@@ -77,9 +73,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 Pratham Mehta - pratham.rm@somaiya.edu
 
 Project Link: [https://github.com/Warrior2612/Media-Recommendation-System](https://github.com/Warrior2612/Media-Recommendation-System)
-
-
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [contributors-shield]: https://img.shields.io/github/contributors/Warrior2612/Stock-Market-Data-Visualiser.svg?style=for-the-badge
