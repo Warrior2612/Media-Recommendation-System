@@ -35,19 +35,12 @@ class Scraper:
         
         votes = [b.attrs.get('data-value')
                 for b in soup.select('td.ratingColumn strong')]
-        
+
         list = []
         
-        # create a empty list for storing
-        # movie information
-        list = []
-        
-        # Iterating over movies to extract
-        # each movie's details
+        # Iterating over movies to extract each movie's details
         for index in range(0, len(movies)):
-            
-            # Separating  movie into: 'place',
-            # 'title', 'year'
+            # Separating  movie into: 'place', 'title', 'year'
             movie_string = movies[index].get_text()
             movie = (' '.join(movie_string.split()).replace('.', ''))
             movie_title = movie[len(str(index))+1:-7]
