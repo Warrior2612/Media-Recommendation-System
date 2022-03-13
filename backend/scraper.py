@@ -5,16 +5,16 @@ import re
 import pandas as pd
 import numpy as np
  
-class Scraper:
+class movies_by_top250:
     """
-    Scraper Class: It handles the main functionality of scraping data in form of tables from the given url
+    movies_by_top250 Class: It handles the main functionality of scraping data in form of tables from the given url
     """
     def __repr__(self):
         """
-        Representation of scraper class is defined here.
+        Representation of movies_by_top250 class is defined here.
         The representation is show when an object of the class is printed.
         """
-        return "Scraper Class"
+        return "movies_by_top250 Class"
 
     def scrape_table(self, url):
         """
@@ -25,7 +25,7 @@ class Scraper:
         Parameters:
         - URL: A String containing url of website to scrape.
         """
-        # Downloading imdb top 250 movie's data
+        # Downloading movies_by_genre top 250 movie's data
         response = requests.get(url)
         soup = BeautifulSoup(response.text, 'lxml')
         
@@ -63,10 +63,10 @@ class Scraper:
             print(movie['place'], '-', movie['movie_title'], '('+movie['year'] +
                 ') -', 'Starring:', movie['star_cast'], movie['rating'])
 
-class IMDB(object):
-	"""docstring for IMDB"""
+class movies_by_genre(object):
+	"""docstring for movies_by_genre"""
 	def __init__(self, url):
-		super(IMDB, self).__init__()
+		super(movies_by_genre, self).__init__()
 		page = requests.get(url)
 
 		self.soup = BeautifulSoup(page.content, 'lxml')
@@ -134,13 +134,20 @@ class IMDB(object):
 				movieVotes.append(np.nan)
 				movieGross.append(np.nan)
 
-		movieData = [movieTitle, movieDate, movieRunTime, movieGenre, movieRating, movieScore, movieDescription,
+		movie_info = [movieTitle, movieDate, movieRunTime, movieGenre, movieRating, movieScore, movieDescription,
 							movieDirector, movieStars, movieVotes, movieGross]
-		return movieData
+		return movie_info
+	
+	def main(self):
+		movie_info = movies_by_genre.movieData(self)
+		print(movie_info[0])
 
 if __name__ == '__main__':
-    url = 'http://www.imdb.com/chart/top'
-    url2 = 'https://www.imdb.com/search/title/?title_type=feature&num_votes=25000,&genres=action'
-    # scr = Scraper();
-    # scr.scrape_table(url)
-    IMDB.main();
+	url = 'http://www.movies_by_genre.com/chart/top'
+	url2 = 'https://www.movies_by_genre.com/search/title/?title_type=feature&num_votes=25000,&genres=action'
+	scr = movies_by_top250();
+	scr.scrape_table(url)
+	print("\n")
+	id1 = movies_by_genre(url2)
+	print(id1.articleTitle())
+	id1.main();
