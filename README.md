@@ -45,7 +45,7 @@ based on the rating, tries to improve the recommendations further.
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-**KJ Somaiya College of Engineering SY BTECH SEM-III MiniProject**
+**KJ Somaiya College of Engineering SY BTECH SEM-IV MiniProject**
 
 ### Built With
 
