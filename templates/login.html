@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style-1.css') }}">
+</head>
+<body>
+    <div class="login">
+        <form name="mainform" onsubmit="return validateForm()">
+            <h1>Login</h1>
+            <div class="text">
+                <input type="text" id="name" name="name" placeholder="Username">
+            </div>
+            <div class="text">
+                <input type="password" id="password" name="password" placeholder="Password">
+            </div>
+            <div class="forget">Forgot Password?</div>
+            <input type="submit" name ="submit" value="Sign In" >
+            <div class="sign-up">
+                Not a member? <a href="/register">Register</a>
+            </div>
+        </form>
+    </div>
+    <script>
+        function validateForm(){
+            var n = document.mainform.name.value;
+           
+            var pass = document.mainform.password.value;
+           
+            if(n==null || n==""){
+                alert("Name cannot be blank");
+                return false;
+            }
+            
+            if(n.length<=6){
+                alert("Name cannot be less than 8 characters")
+                return false;
+
+            }
+            for(let i=0;i<n.length;i++){
+                if(n[i]==='0' || n[i]=== '1' || n[i]=== '2' || n[i]=== '3' || n[i]=== '4' || n[i]==='5' || n[i]=== '6' || n[i]=== '7' || n[i]=== '8' || n[i]=== '9'){
+                    alert("Name cannot contain any numeric value");
+                    return false;
+                }
+            }
+            if(user==null || user==""){
+                alert("Username cannot be blank");
+                return false;
+            }
+            if(pass == null || pass =="" ){
+                alert("Password cannot be blank");
+                return false;
+
+            }
+            else if(pass.length<=6){
+
+            
+                if(conf_pass == null || conf_pass =="" ){
+                    alert("Password is invalid"); 
+                    return false;
+                }
+            }
+            return true;
+      
+        }
+    </script>
+</body>
+</html>
