@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,900&family=Sen:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Document</title>
+    <style>
+        *{
+    margin: 0;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: #151515;
+
+
+}
+.navbar{
+   
+    height: 60px;
+    background-color: black;
+}
+.navbar-container{
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+    height: 100%;
+    color: white;
+
+} 
+.logo-container{
+    flex: 1;
+}
+.logo{
+   font-family: 'Sen' ,sans-serif;
+   font-size: 30px;
+   color: #4bdf00;
+    
+}
+.menu-container{
+    flex: 4;
+}
+.menu-list{
+    display: flex;
+    list-style: none;
+
+}
+.menu-list-item{
+    margin-right: 25px;
+}
+.menu-list-item.active{
+    font-weight: bold;
+    margin-right: 90px;
+
+}
+
+.profile-container{
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+}
+.profile-text-container{
+    margin: 0 10px;
+
+}
+.profile-picture{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+
+}
+.toggle{
+    margin: 20px;
+    width: 40px;
+    height: 20px;
+    background-color: white;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+  
+
+}
+.toggle-icon{
+    color: goldenrod;
+}
+.toggle-ball{
+    width: 18px;
+    height: 18px;
+    background-color: black;
+    position: absolute;
+    right: 1px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+.sidebar{
+    width: 50px;
+    height: 100%;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    padding-top: 60px;
+    align-items: center;
+
+}
+.left-menu-icon{
+    color: white;
+    font-size: 20px;
+    margin-bottom: 70px;
+    cursor: pointer;
+
+}
+        #container{
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: 50px;
+            color: white;
+        }
+        #container > div {
+            background: linear-gradient(#134E5E,#71B280);
+            font-size: 20px;
+            margin: 25px;
+            padding: 35px;
+            width: 150px;
+            height: 60px;
+            border-radius: 30px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-container">
+            <div class="logo-container"><h1 class="logo">Recommender</h1></div>
+            <div class="menu-container">
+                <ul class="menu-list">
+                    <li class="menu-list-item active">Home</li>
+                    <li class="menu-list-item active">Movies</li>
+                    <li class="menu-list-item active">Tv Shows</li>
+                </ul>
+            </div>
+            <div class="profile-container">
+                <img class="profile-picture" src="img/profile.webp" alt="">
+                <span class="profile-text">Profile</span>
+
+    
+                <i class="fa-solid fa-caret-down"></i>
+            </div>
+            <div class="toggle">
+                <i class="fa-solid fa-moon toggle-icon"></i>
+                <i class="fa-solid fa-sun toggle-icon"></i>
+                <div class="toggle-ball"></div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar">
+        <i class="left-menu-icon fa-solid fa-magnifying-glass"></i>
+        <i class="left-menu-icon fa-solid fa-house"></i>
+        <i class="left-menu-icon fa-solid fa-user"></i>
+        <i class="left-menu-icon fa-solid fa-bookmark"></i>
+        <i class="left-menu-icon fa-solid fa-gear"></i>
+    </div>
+    
+    <div id="container">
+        <div>Action</div>
+        
+        <div>Action</div>
+        <div>Action</div>
+        <div>Action</div>
+        <div>Action</div>
+        <div>Action</div>
+        <div>Action</div>
+        <div>Action</div>
+        <div>Action</div>
+        <div>Action</div>
+        <div>Action</div>
+        <div>Action</div>
+        <div>Action</div>
+        <div>Action</div>
+        <div>Action</div>
+    </div>
+</body>
+</html>
