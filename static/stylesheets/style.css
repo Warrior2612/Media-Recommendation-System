@@ -37,11 +37,11 @@ body{
 
 }
 .menu-list-item{
-    margin-right: 30px;
+    margin-right: 15px;
 }
 .menu-list-item.active{
     font-weight: bold;
-    margin-right: 90px;
+    margin-right: 40px;
 
 }
 .profile-container{
