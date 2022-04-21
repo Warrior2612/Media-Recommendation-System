@@ -1,7 +1,7 @@
 from flask import Flask, render_template
     
 app = Flask(__name__) #creating the Flask class object   
-    
+
 @app.route('/') #decorator drfines the   
 def MediaRecommender():  
     return "<a href='/index'>Media Recommendation Website</a>";
@@ -16,7 +16,11 @@ def Login():
 
 @app.route('/register') #decorator drfines the   
 def Register():  
-    return render_template('register.html') ;  
+    return render_template('register.html') ;
+
+@app.route('/choices') #decorator drfines the   
+def Register():  
+    return render_template('choices.html') ;
     
-if __name__ =='__main__':  
+if __name__ =='__main__':
     app.run(debug = True)

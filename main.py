@@ -1,6 +1,6 @@
 import backend.scraper
-import backend.dbConnector
 import backend.recommendation
+from flask_website import app as web_app
 
 from datetime import datetime
 import time
@@ -20,6 +20,7 @@ def updateDB(lastUpdateTime=datetime.utcnow()):
             time.sleep(5)
 
 def algo():
+    web_app.run()
     for i in range(9999999999):
         print(i)
         time.sleep(1)
