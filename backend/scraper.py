@@ -15,8 +15,8 @@ class Scraper:
     The Main Scraper Class which scrapes info from imdb url
     """
     url = "https://www.imdb.com/search/title/?title_type=feature,tv_series&count=250"
-    thumburl = "https://m.media-amazon.com/images/M/"
     thumbtail= "UX67_CR0,0,67,98_AL_.jpg"
+    thumbtail2= "UY98_CR0,0,67,98_AL_.jpg"
 
     def __repr__(self):
         """
@@ -77,7 +77,7 @@ class Scraper:
 
             thumb = media.find("div", class_="lister-item-image float-left")
             thumb2 = thumb.find("a")
-            mediaThumbnail.append(thumb2.find("img").get("src").replace(self.thumbtail, "").replace(self.thumburl, ""))
+            mediaThumbnail.append(thumb2.find("img").get("src").split('._V1_')[0]+'._V1_')
 
             try:
                 casts = mediaCast.text.replace("\n","").split('|')

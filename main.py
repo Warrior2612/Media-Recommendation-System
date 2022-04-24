@@ -19,15 +19,12 @@ def updateDB(lastUpdateTime=datetime.utcnow()):
         else:
             time.sleep(5)
 
-def algo():
+def flask_app():
     web_app.run()
-    for i in range(9999999999):
-        print(i)
-        time.sleep(1)
 
 def main():
-    t1 = threading.Thread(target=updateDB)
-    t2 = threading.Thread(target=algo)
+    t1 = threading.Thread(target=flask_app)
+    t2 = threading.Thread(target=updateDB)
 
     t1.start()
     t2.start()

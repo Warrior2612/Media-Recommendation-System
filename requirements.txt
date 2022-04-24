@@ -3,5 +3,6 @@ requests==2.25.1
 numpy==1.20.3
 pandas
 flask
+Flask-JSGlue
 selenium
 lxml

@@ -1,140 +1,171 @@
-*{
-    margin: 0;
+@import url('https://fonts.googleapis.com/css?family=Sora:200');
+
+html, body{
+    height: 100%;
+    font-family: 'Sora';
+    color: aliceblue;
 }
 
 body{
-    font-family: 'Roboto', sans-serif;
-
-}
-.navbar{
-    width: 205vh;
-    height: 60px;
-    background-color: black;
-}
-.navbar-container{
-    display: flex;
-    align-items: center;
-    padding: 0 50px;
+    width: 100%;
     height: 100%;
-    color: white;
+    margin: 0;
+    background-image: linear-gradient(to bottom, #141b29, #0c111b 300px);
+}
 
-} 
-.logo-container{
-    flex: 1;
+.wrapper{
+    width: 100%;
+    height: 100%;
 }
-.logo{
-   font-family: 'Sen' ,sans-serif;
-   font-size: 30px;
-   color: #4bdf00;
-    
-}
-.menu-container{
-    flex: 4;
-}
-.menu-list{
-    display: flex;
-    list-style: none;
 
-}
-.menu-list-item{
-    margin-right: 15px;
-}
-.menu-list-item.active{
-    font-weight: bold;
-    margin-right: 40px;
-
-}
-.profile-container{
-    flex: 2;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-
-}
-.profile-text-container{
-    margin: 0 10px;
-
-}
-.profile-picture{
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-
-}
-.toggle{
-    margin: 20px;
-    width: 40px;
-    height: 20px;
-    background-color: white;
-    border-radius: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    position: relative;
-  
-
-}
-.toggle-icon{
-    color: goldenrod;
-}
-.toggle-ball{
-    width: 18px;
-    height: 18px;
-    background-color: black;
+.navBar{
     position: absolute;
-    right: 1px;
-    border-radius: 50px;
-    cursor: pointer;
-}
-.sidebar{
-    width: 50px;
+    display: block;
     height: 100%;
-    background-color: black;
-    position: fixed;
-    top: 0;
-    display: flex;
-    flex-direction: column;
-    padding-top: 60px;
-    align-items: center;
-
+    width: 50px;
+    background-color: #537895;
+    background-image: linear-gradient(315deg, #537895 0%, #09203f 74%);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-.left-menu-icon{
-    color: white;
-    font-size: 20px;
-    margin-bottom: 70px;
+
+.iconBar{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    height: 100%;
+    width: 100px;
+    margin-bottom: 100px;
     cursor: pointer;
+    mix-blend-mode: difference;
+}
 
+.rightBar{
+    right: 0;
 }
-.container{
-    background-color: #151515;
-    height: calc(300vh - 50px);
-    width: 205vh;
-    color: white;
+
+.previousRec{
+    left: 50px;
 }
-.content-container{
-    margin-left: 50px;
+
+.nextRec{
+    right: 50px;
 }
-.featured-content{
-    height: 50vh;
-}
-.movie-list-container{
-    padding: 20px;
-    margin-left: 40px;
-}
-.movie-list{
+
+.iconCircle{
     display: flex;
-    align-items: center;
-    height: 300px;
-}
-.movie-list-item{
-    margin-right: 30px;
-}
-.movie-list-item:hover .movie-list-item-img{
-    transform: scale(1.1);
+    justify-content: center;
+    place-items: center;
+    height: 90px;
+    width: 90px;
+    border: 4px solid aliceblue;
+    border-radius: 100%;
+    mix-blend-mode: difference;
 }
 
-.movie-list-item-img{
-    width: 290px;
-    height: 200px;
-    object-fit: cover;
+.iconCircle:hover{
+    background-color: #537895;
+}
+
+.dislike{
+    left: 400px;
+}
+
+.like{
+    right: 400px;
+}
+
+.like, .dislike{
+    height: 70%
+}
+
+i{
+    cursor: pointer;
+}   
+
+.iconDiv{
+    margin-top: 20px;
+    width: 100%;
+    height: 60px;
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.iconDiv:hover{
+    background-color: #537895;
+    border-top: 2px solid aliceblue;
+    border-bottom: 2px solid aliceblue;
+}
+
+.iconDiv.active{
+    background-color: #537895;
+}
+
+.mainContent{
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    align-items: center;
+    height: 100%;
+    margin-left: 50px;
+    margin-right: 50px;
+    font-weight: bold;
+}
+
+.contentBox{
+    display: block;
+    width: 600px;
+    height: 100%;
+}
+
+.contentBox h1{
+    text-align: center;
+    mix-blend-mode: difference;
+}
+
+.contentImage{
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    mix-blend-mode: normal;
+}
+
+.contentImage img{
+    max-width: 100%;
+    max-height: 100%;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: all 0.4ms ease-in-out;
+}
+
+.enlarged img{
+    max-height: 650px;
+    height: 650px;  
+    z-index: 5;
+    transition: all 0.4ms ease-in-out;
+}
+
+.contentRating{
+    text-align: center;
+    mix-blend-mode: difference;
+}
+.contentGenre{
+    text-align: center;
+    margin-bottom: 10px;
+    mix-blend-mode: difference;
+}
+
+.contentDesc{
+    mix-blend-mode: difference;
+    font-size: large;
+}
+
+a{
+    color: inherit;
+    text-decoration: none;
 }
