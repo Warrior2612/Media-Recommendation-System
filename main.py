@@ -1,6 +1,6 @@
 import backend.scraper
 import backend.recommendation
-from flask_website import app as web_app
+import flask_website
 
 from datetime import datetime
 import time
@@ -20,14 +20,23 @@ def updateDB(lastUpdateTime=datetime.utcnow()):
             time.sleep(5)
 
 def flask_app():
-    web_app.run()
+    flask_website.app.run()
+
+def recommender():
+    time.sleep(5)
+    while True:
+        backend.recommendation.content_based_recommendation()
+        flask_website.recommended_ids = backend.recommendation.recommended_ids
+        time.sleep(10)
 
 def main():
     t1 = threading.Thread(target=flask_app)
     t2 = threading.Thread(target=updateDB)
+    t3 = threading.Thread(target=recommender)
 
     t1.start()
     t2.start()
+    t3.start()
 
 if __name__ == '__main__':
     main()
