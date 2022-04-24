@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from flask_jsglue import JSGlue
 import pandas as pd
 
+from backend.recommendation import recommended_ids
+
 df = pd.read_json(r'db/media.json')
 
 app = Flask(__name__)
@@ -9,8 +11,6 @@ jsglue = JSGlue(app)
 app.secret_key = 'abc123'
 
 varId = 1;
-
-recommended_ids = [0, 1, 10, 18, 35, 47, 76, 95, 115, 137, 170, 180, 199, 215, 237, 242]
 
 @app.route('/index')
 def Index():
