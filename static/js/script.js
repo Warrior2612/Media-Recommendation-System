@@ -28,7 +28,7 @@ function main()
     });
     let allIcons = document.querySelectorAll('.iconDiv');
     allIcons.forEach(function(icon, index){
-        if(index == 5)
+        if(index == 6)
         {
             icon.addEventListener('click', ()=>{
                 icon.classList.toggle('active');

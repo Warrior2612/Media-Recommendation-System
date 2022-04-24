@@ -10,14 +10,14 @@ app.secret_key = 'abc123'
 
 varId = 1;
 
-recommended_ids = [0, 4, 10, 18, 35, 47, 76, 95, 115, 137, 170, 180, 199, 215, 237, 242]
+recommended_ids = [0, 1, 10, 18, 35, 47, 76, 95, 115, 137, 170, 180, 199, 215, 237, 242]
 
 @app.route('/index')
-def Index():  
-    if request.method == "post":
-        id = int(request.values.get("id"))
-        return render_template('index.html', data=df, id=id) ;  
-    return render_template('index.html', data=df, id=0) ;  
+def Index():
+    if 'username' in session:
+        return render_template('index.html', data=df, id=0) ; 
+    else:
+        return redirect(url_for('Form')) 
 
 @app.route('/')
 def HomeRedirect():
@@ -71,6 +71,10 @@ def Profile():
 
 @app.route('/watchlist')  
 def Watchlist(): 
+    return '<p>Under Construction</p>' 
+
+@app.route('/preferences')  
+def Preferences(): 
     return '<p>Under Construction</p>' 
 
 if __name__ =='__main__':
