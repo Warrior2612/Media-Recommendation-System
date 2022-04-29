@@ -6,9 +6,9 @@ import numpy as np
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
-opts = webdriver.FirefoxOptions()
+opts = webdriver.ChromeOptions()
 opts.headless = True
-driver = webdriver.Firefox(options=opts)
+driver = webdriver.Chrome(options=opts)
 
 class Scraper:
     """

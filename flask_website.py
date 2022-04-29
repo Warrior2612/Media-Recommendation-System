@@ -1,12 +1,18 @@
+import json
 from flask import Flask, render_template, request, redirect, url_for, session
-from flask_jsglue import JSGlue
 import pandas as pd
+import requests
+from flask_jsglue import JSGlue
 
 df = pd.read_json(r'db/media.json')
+users = pd.read_json(r'db/users.json')
+unpw = dict(zip(users['Username'], users['Password']))
+
 
 app = Flask(__name__)
 jsglue = JSGlue(app)
 app.secret_key = 'abc123'
+
 
 varId = 1;
 
@@ -25,13 +31,34 @@ def HomeRedirect():
 
 @app.route('/form', methods=['GET', 'POST']) 
 def Form():  
+    global unpw
     if request.method == 'POST':
-        return redirect(url_for('Index'))
-    return render_template('form.html') ;  
+        if 'email' in request.form:
+            un = request.form.get('username')
+            pw = request.form.get('password')
+            em = request.form.get('email')
+            name = request.form.get('name')
+
+            users.loc[len(users.index)] = [un, pw, em, name]
+            users.to_json('db/users.json')
+            unpw = dict(zip(users['Username'], users['Password']))
+            return redirect(url_for('Form'))
+        else:
+            un = request.form.get('username')
+            pw = request.form.get('password')
+
+            if un in unpw:
+                if unpw[un] == pw:
+                    return redirect(url_for('Success', username=un))
+                else:
+                    return render_template('form.html')
+            else:
+                return render_template('form.html')
+    return render_template('form.html')
 
 @app.route('/choices')
 def Choices():  
-    return render_template('choices.html') ;
+    return render_template('choices.html')
 
 @app.route('/stream')
 def Stream():
@@ -47,10 +74,9 @@ def Response():
         varId = int(request.values.get("id"))
     return ""
 
-@app.route('/success',methods = ["POST"])  
-def Success():  
-    if request.method == "POST":  
-        session['username']=request.form['username']  
+@app.route('/success/<username>',methods = ["GET"])  
+def Success(username):  
+    session['username']=username 
     return render_template('success.html') 
 
 @app.route('/logout')  
@@ -71,10 +97,6 @@ def Profile():
 
 @app.route('/watchlist')  
 def Watchlist(): 
-    return '<p>Under Construction</p>' 
-
-@app.route('/preferences')  
-def Preferences(): 
     return '<p>Under Construction</p>' 
 
 if __name__ =='__main__':

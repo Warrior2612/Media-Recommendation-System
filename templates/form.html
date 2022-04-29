@@ -21,18 +21,18 @@
             </div>
             <div class="active_line" id="active_line"></div>
             <div class="login_form form">
-                <form method="POST" action ="http://localhost:5000/success">
-                    <input class="inputFields" type="text" placeholder="Username" name="username" required>
-                    <input class="inputFields" type="password" placeholder="Password" name="password" required>
+                <form method="POST" action ="">
+                    <input class="inputFields" type="text" placeholder="Username" name="username" required minlength="3">
+                    <input class="inputFields" type="password" placeholder="Password" name="password" required minlength="5">
                     <input class="submitButton" type="submit" value="Sign In">
                 </form>
             </div>
             <div class="register_form form">
                 <form method="POST">
-                    <input class="inputFields" type="text" placeholder="Name" name="name" required>
-                    <input class="inputFields" type="email" placeholder="Email" name="email" required>
-                    <input class="inputFields" type="text" placeholder="Username" name="username">
-                    <input class="inputFields" type="password" placeholder="Password" name="password">
+                    <input class="inputFields" type="text" placeholder="Name" name="name" required minlength="3">
+                    <input class="inputFields" type="email" placeholder="Email" name="email" required> 
+                    <input class="inputFields" type="text" placeholder="Username" name="username" minlength="3">
+                    <input class="inputFields" type="password" placeholder="Password" name="password" minlength="5">
                     <input class="submitButton" type="submit" value="Sign Up">
                 </form>
             </div>

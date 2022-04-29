@@ -72,9 +72,10 @@
         const wrapper = document.getElementById('wrapper');
         const prev = document.getElementById('previousRec');
         const next = document.getElementById('nextRec');
-        let color;
-        let var_id=0;
-        let var_url = "localhost:5000/stream";
+        var color;
+        var var_id=0;
+        var var_url = "localhost:5000/stream";
+        var id;
 
         $.ajax({
                 url: "{{url_for('Response')}}",
