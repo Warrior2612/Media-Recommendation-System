@@ -11,11 +11,14 @@ body{
     height: 100%;
     margin: 0;
     background-image: linear-gradient(to bottom, #141b29, #0c111b 300px);
+    z-index: -1;
 }
 
 .wrapper{
     width: 100%;
     height: 100%;
+    background-color: inherit;
+    background-image: inherit;
 }
 
 .navBar{
@@ -26,6 +29,7 @@ body{
     background-color: #537895;
     background-image: linear-gradient(315deg, #537895 0%, #09203f 74%);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    z-index: 5;
 }
 
 .iconBar{
@@ -38,6 +42,7 @@ body{
     margin-bottom: 100px;
     cursor: pointer;
     mix-blend-mode: difference;
+    z-index: 5;
 }
 
 .rightBar{
@@ -56,10 +61,12 @@ body{
     display: flex;
     justify-content: center;
     place-items: center;
-    height: 90px;
-    width: 90px;
+    height: 50px;
+    width: 50px;
     border: 4px solid aliceblue;
     border-radius: 100%;
+    margin-top: 10px;
+    margin-left: 45%;
     mix-blend-mode: difference;
 }
 
@@ -114,6 +121,8 @@ i{
     margin-left: 50px;
     margin-right: 50px;
     font-weight: bold;
+    width: 93%;
+    position: absolute;
 }
 
 .contentBox{
@@ -168,4 +177,71 @@ i{
 a{
     color: inherit;
     text-decoration: none;
+}
+
+.hiddenContent{
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    align-items: center;
+    height: 85%;
+    width: 70%;
+    position: absolute;
+    margin-left: 15%;
+    margin-right: 25%;
+    margin-top: 70px;
+    font-weight: bold;
+    background-color: aliceblue;
+    z-index: -10;
+    border-radius: 10px;
+    transition: all 1ms ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    opacity: 0;
+}
+
+.hiddenContent.active{
+    z-index: 5;
+    opacity: 100%;
+    transition: all 1ms ease-in-out;
+}
+
+.hiddenContent .contentImage{
+    height: 100%;
+}
+
+.hiddenContent .contentBox{
+    width: 400px;
+}
+
+.hiddenText{
+    height: 100%;
+    color: #141b29;
+    width: 30%;
+    font-size: x-large;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    place-items: center;
+}
+
+.hiddenText div{
+    margin-top: 10px;
+}
+
+.leftText{
+    margin-left: auto;
+}
+
+.rightText{
+    margin-right: auto;
+    font-size: xx-large;
+}
+
+.hiddenTextTitleLeft{
+    text-shadow: 2px 2px #00b7ff;
+}
+
+.hiddenTextTitleRight{
+    text-shadow: 2px 2px #ff0000;
 }

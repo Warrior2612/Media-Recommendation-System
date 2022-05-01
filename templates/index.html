@@ -21,27 +21,17 @@
         <div class="navBar leftBar">
             <a href='/index'><div class="iconDiv" id="iconDiv1"><i class="fa-solid fa-house fa-2x"></i></div></a>
             <a href='/watchlist'><div class="iconDiv" id="iconDiv2"><i class="fa-solid fa-bookmark fa-2x"></i></div></a>
-            <div class="iconDiv" id="iconDiv3"><i class="fa-solid fa-arrow-up fa-2x"></i></div>
-            <div class="iconDiv" id="iconDiv4"><i class="fa-solid fa-thumbs-up fa-2x"></i></div>
-            <div class="iconDiv" id="iconDiv5"><i class="fa-solid fa-thumbs-down fa-2x"></i></div>
+            <a href='/top'><div class="iconDiv" id="iconDiv3"><i class="fa-solid fa-arrow-up fa-2x"></i></div>
+            <a href='/movies'><div class="iconDiv" id="iconDiv4"><i class="fa-solid fa-clapperboard fa-2x"></i></div></a>
+            <a href='/shows'><div class="iconDiv" id="iconDiv5"><i class="fa-solid fa-tv fa-2x"></i></div></a>
         </div>
         <div class="iconBar previousRec" id="previousRec">
             <i class="fa-solid fa-angle-left fa-3x"></i>
-        </div>
-        <div class="iconBar dislike">
-            <div class="iconCircle">
-                <i class="fa-solid fa-heart-crack fa-4x"></i>
-            </div>
         </div>
         <div class="navBar rightBar">
             <a href='/profile'><div class="iconDiv" id="iconDiv6"><i class="fa-solid fa-user fa-2x"></i></div></a>
             <div class="iconDiv" id="iconDiv7"><i class="fa-solid fa-fill fa-2x"></i></div>
             <a href='/logout'><div class="iconDiv" id="iconDiv8"><i class="fa-solid fa-right-from-bracket fa-2x"></i></div></a>
-        </div>
-        <div class="iconBar like">
-            <div class="iconCircle">
-                <i class="fa-solid fa-heart fa-4x"></i>
-            </div>
         </div>
         <div class="iconBar nextRec" id="nextRec">
             <i class="fa-solid fa-angle-right fa-3x"></i>
@@ -63,19 +53,57 @@
                 <div class="contentDesc">
                     <span id="desc">{{data.iloc[id]['Description']}}</span>
                 </div>
+                <div class="iconCircle" id="iconCircle">
+                    <i class="fa-solid fa-heart fa-2x"></i>
+                </div>
             </div>
         </div>
-    </div>
+        <div class="hiddenContent" id="hiddenContent">
+            <div class="hiddenText leftText" id="hiddenText">
+                <div class="hiddenContentDesc">
+                    <span class="hiddenTextTitleLeft">Description: </span><br><span id="hidDesc">{{data.iloc[id]['Description']}}</span>
+                </div>
+                <div class="hiddenContentActors">
+                    <span class="hiddenTextTitleLeft">Movie Stars: </span><br><span id="hidStars">{{','.join(data.iloc[id]['Stars'])}}</span>
+                </div>
+                <div class="hiddenContentDir">
+                    <span class="hiddenTextTitleLeft">Director: </span><br><span id="hidDir">{{data.iloc[id]['Director']}}</span>
+                </div>
+            </div>
+            <div class="contentBox">
+                <div class="contentImage" id="contentImage">
+                    <img src="{{data.iloc[id]['Thumbnail']}}" id="hidThumb" crossorigin="anonymous">
+                </div>
+            </div>
+            <div class="hiddenText rightText" id="hiddenText2">
+                <div class="hiddenContentRating">
+                    <span class="hiddenTextTitleRight">IMDb Rating: </span><br><span id="hidRating">{{data.iloc[id]['Rating']}}</span>
+                </div>
+                <div class="hiddenContentGenre">
+                    <span class="hiddenTextTitleRight">Genres: </span><br><span id="hidGenre">{{''.join(data.iloc[id]['Genre'])}}</span>
+                </div>
+                <div class="hiddenContentVotes">
+                    <span class="hiddenTextTitleRight">Votes: </span><br><span id="hidVotes">{{data.iloc[id]['Votes']}}</span>
+                </div>
+                <div class="hiddenContentDate">
+                    <span class="hiddenTextTitleRight">Date: </span><br><span id="hidDate">{{data.iloc[id]['Date']}}</span>
+                </div>
+                <div class="hiddenContentRuntime">
+                    <span class="hiddenTextTitleRight">Runtime: </span><br><span id="hidRuntime">{{data.iloc[id]['Runtime']}} </span><span> minutes</span>
+                </div>
+            </div>
+        </div>
     <script>
         const colorThief = new ColorThief();
         const img = document.querySelector('img');
         const wrapper = document.getElementById('wrapper');
         const prev = document.getElementById('previousRec');
         const next = document.getElementById('nextRec');
+        const like = document.getElementById('iconCircle');
         var color;
         var var_id=0;
         var var_url = "localhost:5000/stream";
-        var id;
+        var id = -1;
 
         $.ajax({
                 url: "{{url_for('Response')}}",
@@ -110,20 +138,54 @@
             });
         });
 
+        like.addEventListener('click', ()=>{
+            if(id != -1)
+            {
+                $.ajax({
+                url: "{{url_for('Like')}}",
+                type: 'get',
+                data: {id: id},
+                success: function(response){
+                }
+                });
+            }
+        });
+
         const title = document.getElementById('title');
         const image = document.getElementById('thumb');
         const rating = document.getElementById('rating');
         const genre = document.getElementById('genre');
         const desc = document.getElementById('desc');
 
+        const hidImage = document.getElementById('hidThumb');
+        const hidRating = document.getElementById('hidRating');
+        const hidGenre = document.getElementById('hidGenre');
+        const hidDesc = document.getElementById('hidDesc');
+        const hidStars = document.getElementById('hidStars');
+        const hidDir = document.getElementById('hidDir');
+        const hidVotes = document.getElementById('hidVotes');
+        const hidDate = document.getElementById('hidDate');
+        const hidRun = document.getElementById('hidRuntime');
+
         var xhr = new XMLHttpRequest();
         function handleNewData() {
             var messages = xhr.responseText.split('\n');
-            title.textContent = messages[0];
-            image.src = messages[1];
-            rating.textContent = messages[2];
-            genre.textContent = messages[3];
-            desc.textContent = messages[4];
+            id = messages[0];
+            title.textContent = messages[1];
+            image.src = messages[2];
+            rating.textContent = messages[3];
+            genre.textContent = messages[4];
+            desc.textContent = messages[5];
+
+            hidImage.src = messages[2];
+            hidRating.textContent = messages[3];
+            hidGenre.textContent = messages[4];
+            hidDesc.textContent = messages[5];
+            hidStars.textContent = messages[6];
+            hidDir.textContent = messages[7];
+            hidVotes.textContent = messages[9];
+            hidDate.textContent = messages[8];
+            hidRun.textContent = messages[10];
         }
 
         var timer2;

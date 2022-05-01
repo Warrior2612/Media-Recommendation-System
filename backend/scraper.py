@@ -14,7 +14,9 @@ class Scraper:
     """
     The Main Scraper Class which scrapes info from imdb url
     """
-    url = "https://www.imdb.com/search/title/?title_type=feature,tv_series&count=250"
+    url = ["https://www.imdb.com/search/title/?title_type=feature,tv_series&count=250",
+"https://www.imdb.com/search/title/?title_type=feature&count=250",
+"https://www.imdb.com/search/title/?title_type=tv_series&count=250"]
     thumbtail= "UX67_CR0,0,67,98_AL_.jpg"
     thumbtail2= "UY98_CR0,0,67,98_AL_.jpg"
 
@@ -25,15 +27,16 @@ class Scraper:
         """
         return "Scraper Class"
 
-    def __init__(self):
+    def __init__(self, url):
         super(Scraper, self).__init__()
-        driver.get(self.url)
-        y = 700
-        for timer in range(0,70):
-            driver.execute_script("window.scrollTo(0, "+str(y)+")")
-            y += 700
-            time.sleep(1)
-        self.soup = BeautifulSoup(driver.page_source, 'lxml')
+        if url != 'true':
+            driver.get(url)
+            y = 700
+            for timer in range(0,70):
+                driver.execute_script("window.scrollTo(0, "+str(y)+")")
+                y += 700
+                time.sleep(1)
+            self.soup = BeautifulSoup(driver.page_source, 'lxml')
 
     def articleTitle(self):
         return self.soup.find("h1", class_="header").text.replace("\n","")
@@ -107,9 +110,20 @@ class Scraper:
         return media_info_df
 
     def main(self):
-        media_info = Scraper.mediaData(self)
-        media_info.to_json("db/media.json")
-
+        i = 1
+        for url in self.url:
+            self.__init__(url)
+            media_info = Scraper.mediaData(self)
+            if i == 1:
+                media_info.to_json("db/media.json")
+                i+=1
+            elif i == 2:
+                media_info.to_json("db/movies.json")
+                i+=1
+            elif i == 3:
+                media_info.to_json("db/shows.json")
+                i = 1
+            
 if __name__ == '__main__':
-    scr = Scraper()
+    scr = Scraper('true')
     scr.main()

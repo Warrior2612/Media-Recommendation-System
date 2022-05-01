@@ -17,14 +17,19 @@ function switchActive()
 function colorSteal()
 {
     color = colorThief.getColor(img);
+    wrapper.style.backgroundImage = "none";
     wrapper.style.backgroundColor = "rgb("+color[0]+","+color[1]+","+color[2]+")";
 }
 
 function main()
 {
     mainImage = document.getElementById("contentImage");
+    hiddenContent = document.getElementById("hiddenContent");
     mainImage.addEventListener('click', ()=>{
-        mainImage.classList.toggle("enlarged")
+        hiddenContent.classList.toggle("active")
+    });
+    hiddenContent.addEventListener('click', ()=>{
+        hiddenContent.classList.toggle("active")
     });
     let allIcons = document.querySelectorAll('.iconDiv');
     allIcons.forEach(function(icon, index){
@@ -36,7 +41,8 @@ function main()
                 {
                     localStorage.removeItem('icon'+index);
                     img.removeEventListener('load', colorSteal);
-                    wrapper.style.backgroundColor = 'transparent'
+                    wrapper.style.backgroundColor = 'transparent';
+                    wrapper.style.backgroundImage = 'inherit';
                 }
                 else
                 {

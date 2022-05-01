@@ -5,23 +5,49 @@ import requests
 from flask_jsglue import JSGlue
 
 df = pd.read_json(r'db/media.json')
+movie_df = pd.read_json(r'db/movies.json')
+shows_df = pd.read_json(r'db/shows.json')
 users = pd.read_json(r'db/users.json')
+likes = pd.read_json(r'db/likes.json')
 unpw = dict(zip(users['Username'], users['Password']))
-
 
 app = Flask(__name__)
 jsglue = JSGlue(app)
 app.secret_key = 'abc123'
 
-
 varId = 1;
 
-recommended_ids = [0, 1, 10, 18, 35, 47, 76, 95, 115, 137, 170, 180, 199, 215, 237, 242]
+recommended_ids = list(range(0, 250))
+all_ids = list(range(0, 250))
+liked_ids = []
 
 @app.route('/index')
 def Index():
     if 'username' in session:
+        global liked_ids
+        liked_ids = likes.iloc[likes.index[likes['Username'] == session['username']]]['liked_ids'][0]
         return render_template('index.html', data=df, id=0) ; 
+    else:
+        return redirect(url_for('Form')) 
+
+@app.route('/top')
+def Top():
+    if 'username' in session:
+        return render_template('top.html', data=df, id=0) ; 
+    else:
+        return redirect(url_for('Form')) 
+
+@app.route('/movies')
+def Movies():
+    if 'username' in session:
+        return render_template('movies.html', data=df, id=0) ; 
+    else:
+        return redirect(url_for('Form')) 
+
+@app.route('/shows')
+def Shows():
+    if 'username' in session:
+        return render_template('shows.html', data=df, id=0) ; 
     else:
         return redirect(url_for('Form')) 
 
@@ -64,14 +90,40 @@ def Choices():
 def Stream():
     global varId
     def generate(id):
-        return df.iloc[id]['Title']+"\n"+df.iloc[id]['Thumbnail']+"\n"+str(df.iloc[id]['Rating'])+"\n"+''.join(df.iloc[id]['Genre'])+"\n"+df.iloc[id]['Description']
+        return str(id)+"\n"+df.iloc[id]['Title']+"\n"+df.iloc[id]['Thumbnail']+"\n"+str(df.iloc[id]['Rating'])+"\n"+''.join(df.iloc[id]['Genre'])+"\n"+df.iloc[id]['Description']+"\n"+' '.join(df.iloc[id]['Stars'])+"\n"+str(df.iloc[id]['Director'])+"\n"+df.iloc[id]['Date']+"\n"+str(df.iloc[id]['Votes'])+"\n"+str(df.iloc[id]['Runtime'])
     return app.response_class(generate(recommended_ids[varId]), mimetype="text/plain")
+
+@app.route('/streamInd/<type>')
+def StreamInd(type):
+    global varId
+    def generate(id):
+        return str(id)+"\n"+df.iloc[id]['Title']+"\n"+df.iloc[id]['Thumbnail']+"\n"+str(df.iloc[id]['Rating'])+"\n"+''.join(df.iloc[id]['Genre'])+"\n"+df.iloc[id]['Description']+"\n"+' '.join(df.iloc[id]['Stars'])+"\n"+str(df.iloc[id]['Director'])+"\n"+df.iloc[id]['Date']+"\n"+str(df.iloc[id]['Votes'])+"\n"+str(df.iloc[id]['Runtime'])
+    def generateMovies(id):
+        return str(id)+"\n"+movie_df.iloc[id]['Title']+"\n"+movie_df.iloc[id]['Thumbnail']+"\n"+str(movie_df.iloc[id]['Rating'])+"\n"+''.join(movie_df.iloc[id]['Genre'])+"\n"+movie_df.iloc[id]['Description']+"\n"+' '.join(movie_df.iloc[id]['Stars'])+"\n"+str(movie_df.iloc[id]['Director'])+"\n"+movie_df.iloc[id]['Date']+"\n"+str(movie_df.iloc[id]['Votes'])+"\n"+str(movie_df.iloc[id]['Runtime'])
+    def generateShows(id):
+        return str(id)+"\n"+shows_df.iloc[id]['Title']+"\n"+shows_df.iloc[id]['Thumbnail']+"\n"+str(shows_df.iloc[id]['Rating'])+"\n"+''.join(shows_df.iloc[id]['Genre'])+"\n"+shows_df.iloc[id]['Description']+"\n"+' '.join(shows_df.iloc[id]['Stars'])+"\n"+str(shows_df.iloc[id]['Director'])+"\n"+shows_df.iloc[id]['Date']+"\n"+str(shows_df.iloc[id]['Votes'])+"\n"+str(shows_df.iloc[id]['Runtime'])
+    if type == '1':
+        return app.response_class(generate(all_ids[varId]), mimetype="text/plain")
+    elif type == '2':
+        return app.response_class(generateMovies(all_ids[varId]), mimetype="text/plain")
+    elif type == '3':
+        return app.response_class(generateShows(all_ids[varId]), mimetype="text/plain")
+   
 
 @app.route('/response', methods=['GET', 'POST'])
 def Response():
     global varId
     if request.method == 'GET':
         varId = int(request.values.get("id"))
+    return ""
+
+@app.route('/like', methods=['GET', 'POST'])
+def Like():
+    global liked_ids
+    if request.method == 'GET':
+        liked_ids.append(int(request.values.get("id")))
+        likes.iloc[likes.index[likes['Username' == session['username']]]]['liked_ids'] = liked_ids
+        likes.to_json('db/likes.json')
     return ""
 
 @app.route('/success/<username>',methods = ["GET"])  
@@ -85,7 +137,7 @@ def Logout():
         session.pop('username',None)  
         return render_template('logout.html');  
     else:  
-        return '<p>user already logged out</p>'  
+        return render_template('session.html')
  
 @app.route('/profile')  
 def Profile():  
@@ -93,11 +145,11 @@ def Profile():
         username = session['username']  
         return render_template('profile.html',name=username)  
     else:  
-        return '<p>Please login first</p>'  
+        return render_template('session.html')  
 
 @app.route('/watchlist')  
 def Watchlist(): 
-    return '<p>Under Construction</p>' 
+    return render_template('session.html')
 
 if __name__ =='__main__':
     app.run(debug = True)
