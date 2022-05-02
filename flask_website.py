@@ -17,7 +17,7 @@ app = Flask(__name__)
 jsglue = JSGlue(app)
 app.secret_key = 'abc123'
 
-varId = 1
+varId = 0
 
 recommended_ids = list(range(0, 250))
 all_ids = list(range(0, 250))
@@ -107,6 +107,7 @@ def StreamInd(type):
         return str(id)+"\n"+movie_df.iloc[id]['Title']+"\n"+movie_df.iloc[id]['Thumbnail']+"\n"+str(movie_df.iloc[id]['Rating'])+"\n"+''.join(movie_df.iloc[id]['Genre'])+"\n"+movie_df.iloc[id]['Description']+"\n"+' '.join(movie_df.iloc[id]['Stars'])+"\n"+str(movie_df.iloc[id]['Director'])+"\n"+movie_df.iloc[id]['Date']+"\n"+str(movie_df.iloc[id]['Votes'])+"\n"+str(movie_df.iloc[id]['Runtime'])
     def generateShows(id):
         return str(id)+"\n"+shows_df.iloc[id]['Title']+"\n"+shows_df.iloc[id]['Thumbnail']+"\n"+str(shows_df.iloc[id]['Rating'])+"\n"+''.join(shows_df.iloc[id]['Genre'])+"\n"+shows_df.iloc[id]['Description']+"\n"+' '.join(shows_df.iloc[id]['Stars'])+"\n"+str(shows_df.iloc[id]['Director'])+"\n"+shows_df.iloc[id]['Date']+"\n"+str(shows_df.iloc[id]['Votes'])+"\n"+str(shows_df.iloc[id]['Runtime'])
+    
     if type == '1':
         return app.response_class(generate(all_ids[varId]), mimetype="text/plain")
     elif type == '2':
@@ -114,6 +115,8 @@ def StreamInd(type):
     elif type == '3':
         return app.response_class(generateShows(all_ids[varId]), mimetype="text/plain")
     elif type == '4':
+        if varId >= len(liked_ids):
+            varId = len(liked_ids)-1
         return app.response_class(generate(liked_ids[varId]), mimetype="text/plain")
 
 @app.route('/response', methods=['GET', 'POST'])
