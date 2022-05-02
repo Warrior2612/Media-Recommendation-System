@@ -31,6 +31,9 @@
         <div class="navBar rightBar">
             <a href='/profile'><div class="iconDiv" id="iconDiv6"><i class="fa-solid fa-user fa-2x"></i></div></a>
             <div class="iconDiv" id="iconDiv7"><i class="fa-solid fa-fill fa-2x"></i></div>
+            <div class="iconDiv" id="likeCircle">
+                <i class="fa-solid fa-heart fa-2x"></i>
+            </div>
             <a href='/logout'><div class="iconDiv" id="iconDiv8"><i class="fa-solid fa-right-from-bracket fa-2x"></i></div></a>
         </div>
         <div class="iconBar nextRec" id="nextRec">
@@ -100,6 +103,7 @@
         const prev = document.getElementById('previousRec');
         const next = document.getElementById('nextRec');
         const like = document.getElementById('iconCircle');
+        const like2 = document.getElementById('likeCircle');
         var color;
         var var_id=0;
         var var_url = "localhost:5000/stream";
@@ -146,6 +150,21 @@
                 type: 'get',
                 data: {id: id},
                 success: function(response){
+                    varId = 0;
+                }
+                });
+            }
+        });
+
+        like2.addEventListener('click', ()=>{
+            if(id != -1)
+            {
+                $.ajax({
+                url: "{{url_for('Like')}}",
+                type: 'get',
+                data: {id: id},
+                success: function(response){
+                    varId = 0;
                 }
                 });
             }
@@ -192,6 +211,10 @@
         timer2 = setInterval(()=> {
             handleNewData();
             xhr.open('GET', Flask.url_for('Stream'));
+            xhr.onloadend = function() {
+            if(xhr.status == 500) 
+                location.href = Flask.url_for('Empty');
+            }
             xhr.send();
         }, 100);
     </script>

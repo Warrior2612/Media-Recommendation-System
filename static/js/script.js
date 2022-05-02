@@ -23,6 +23,7 @@ function colorSteal()
 
 function main()
 {
+    var i = 0;
     mainImage = document.getElementById("contentImage");
     hiddenContent = document.getElementById("hiddenContent");
     mainImage.addEventListener('click', ()=>{
@@ -37,24 +38,27 @@ function main()
         {
             icon.addEventListener('click', ()=>{
                 icon.classList.toggle('active');
-                if(localStorage.getItem('icon'+index) == 'true')
+                if(i == 1)
                 {
                     localStorage.removeItem('icon'+index);
                     img.removeEventListener('load', colorSteal);
                     wrapper.style.backgroundColor = 'transparent';
                     wrapper.style.backgroundImage = 'inherit';
+                    i = 0;
                 }
-                else
+                else if(i == 0)
                 {
                     localStorage.setItem('icon'+index, 'true');
                     img.addEventListener('load', colorSteal);
+                    i = 1;
                 }
             });
         }
         else
         {
             icon.addEventListener('click', ()=>{
-                    icon.classList.toggle('active');
+                    icon.classList.toggle('fa-lg')
+                    setTimeout(function(){ icon.classList.toggle('fa-lg') }, 100);
                     if(localStorage.getItem('icon'+index) == 'true')
                     {
                         localStorage.removeItem('icon'+index);

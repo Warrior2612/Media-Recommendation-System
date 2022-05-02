@@ -31,8 +31,8 @@
         <div class="navBar rightBar">
             <a href='/profile'><div class="iconDiv" id="iconDiv6"><i class="fa-solid fa-user fa-2x"></i></div></a>
             <div class="iconDiv" id="iconDiv7"><i class="fa-solid fa-fill fa-2x"></i></div>
-            <div class="iconDiv" id="likeCircle">
-                <i class="fa-solid fa-heart fa-2x"></i>
+            <div class="iconDiv" id="dislikeCircle">
+                <i class="fa-solid fa-heart-crack fa-2x"></i>
             </div>
             <a href='/logout'><div class="iconDiv" id="iconDiv8"><i class="fa-solid fa-right-from-bracket fa-2x"></i></div></a>
         </div>
@@ -57,7 +57,7 @@
                     <span id="desc">{{data.iloc[id]['Description']}}</span>
                 </div>
                 <div class="iconCircle" id="iconCircle">
-                    <i class="fa-solid fa-heart fa-2x"></i>
+                    <i class="fa-solid fa-heart-crack fa-2x"></i>
                 </div>
             </div>
         </div>
@@ -70,7 +70,7 @@
                     <span class="hiddenTextTitleLeft">Movie Stars: </span><br><span id="hidStars">{{','.join(data.iloc[id]['Stars'])}}</span>
                 </div>
                 <div class="hiddenContentDir">
-                    <span class="hiddenTextTitleLeft">Director: </span><span id="hidDir">{{data.iloc[id]['Director']}}</span>
+                    <span class="hiddenTextTitleLeft">Director: </span><br><span id="hidDir">{{data.iloc[id]['Director']}}</span>
                 </div>
             </div>
             <div class="contentBox">
@@ -80,19 +80,19 @@
             </div>
             <div class="hiddenText rightText" id="hiddenText2">
                 <div class="hiddenContentRating">
-                    <span class="hiddenTextTitleRight">IMDb Rating: </span><span id="hidRating">{{data.iloc[id]['Rating']}}</span>
+                    <span class="hiddenTextTitleRight">IMDb Rating: </span><br><span id="hidRating">{{data.iloc[id]['Rating']}}</span>
                 </div>
                 <div class="hiddenContentGenre">
                     <span class="hiddenTextTitleRight">Genres: </span><br><span id="hidGenre">{{''.join(data.iloc[id]['Genre'])}}</span>
                 </div>
                 <div class="hiddenContentVotes">
-                    <span class="hiddenTextTitleRight">Votes: </span><span id="hidVotes">{{data.iloc[id]['Votes']}}</span>
+                    <span class="hiddenTextTitleRight">Votes: </span><br><span id="hidVotes">{{data.iloc[id]['Votes']}}</span>
                 </div>
                 <div class="hiddenContentDate">
-                    <span class="hiddenTextTitleRight">Date: </span><span id="hidDate">{{data.iloc[id]['Date']}}</span>
+                    <span class="hiddenTextTitleRight">Date: </span><br><span id="hidDate">{{data.iloc[id]['Date']}}</span>
                 </div>
                 <div class="hiddenContentRuntime">
-                    <span class="hiddenTextTitleRight">Runtime: </span><span id="hidRuntime">{{data.iloc[id]['Runtime']}} </span><span> minutes</span>
+                    <span class="hiddenTextTitleRight">Runtime: </span><br><span id="hidRuntime">{{data.iloc[id]['Runtime']}} </span><span> minutes</span>
                 </div>
             </div>
         </div>
@@ -102,8 +102,8 @@
         const wrapper = document.getElementById('wrapper');
         const prev = document.getElementById('previousRec');
         const next = document.getElementById('nextRec');
-        const like = document.getElementById('iconCircle');
-        const like2 = document.getElementById('likeCircle');
+        const dislike = document.getElementById('iconCircle');
+        const dislike2 = document.getElementById('dislikeCircle');
         var color;
         var var_id=0;
         var var_url = "localhost:5000/stream";
@@ -142,11 +142,11 @@
             });
         });
 
-        like.addEventListener('click', ()=>{
+        dislike.addEventListener('click', ()=>{
             if(id != -1)
             {
                 $.ajax({
-                url: "{{url_for('Like')}}",
+                url: "{{url_for('Dislike')}}",
                 type: 'get',
                 data: {id: id},
                 success: function(response){
@@ -156,11 +156,11 @@
             }
         });
 
-        like2.addEventListener('click', ()=>{
+        dislike2.addEventListener('click', ()=>{
             if(id != -1)
             {
                 $.ajax({
-                url: "{{url_for('Like')}}",
+                url: "{{url_for('Dislike')}}",
                 type: 'get',
                 data: {id: id},
                 success: function(response){
@@ -210,7 +210,11 @@
         var timer2;
         timer2 = setInterval(()=> {
             handleNewData();
-            xhr.open('GET', Flask.url_for('StreamInd', {type: 2}));
+            xhr.open('GET', Flask.url_for('StreamInd', {type: 4}));
+            xhr.onloadend = function() {
+            if(xhr.status == 500) 
+                location.href = Flask.url_for('Empty');
+            }
             xhr.send();
         }, 100);
     </script>
