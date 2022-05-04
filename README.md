@@ -9,7 +9,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/Warrior2612/Media-Recommendation-System">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/logo.png" alt="Logo">
   </a>
 
   <h3 align="center">Media Recommendation System</h3>
