@@ -43,7 +43,11 @@ based on the rating, tries to improve the recommendations further.
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]]
+#### Home Page
+![Product Name Screen Shot][product-screenshot]
+
+#### Login Page
+![Product Name Screen Shot 2][product-screenshot2]
 
 **KJ Somaiya College of Engineering SY BTECH SEM-IV MiniProject**
 
@@ -87,3 +91,4 @@ Project Link: [https://github.com/Warrior2612/Media-Recommendation-System](https
 [license-shield]: https://img.shields.io/github/license/Warrior2612/Media-Recommendation-System?label=license&style=for-the-badge
 [license-url]: https://github.com/Warrior2612/Media-Recommendation-System/blob/main/LICENSE.txt
 [product-screenshot]: images/screenshot.png
+[product-screenshot]: images/screenshot2.png
