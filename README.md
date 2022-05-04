@@ -43,7 +43,7 @@ based on the rating, tries to improve the recommendations further.
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]]
 
 **KJ Somaiya College of Engineering SY BTECH SEM-IV MiniProject**
 
@@ -51,10 +51,11 @@ based on the rating, tries to improve the recommendations further.
 
 * [Python](https://www.python.org/)
 * [Flask](https://flask.palletsprojects.com/en/2.0.x/)
-* [MySQL](https://www.mysql.com/)
+* Sklearn
 * HTML
 * CSS
 * Javascript
+* Ajax
 
 <!-- CONTRIBUTING -->
 ## Contributions
@@ -75,14 +76,14 @@ Pratham Mehta - pratham.rm@somaiya.edu
 Project Link: [https://github.com/Warrior2612/Media-Recommendation-System](https://github.com/Warrior2612/Media-Recommendation-System)
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[contributors-shield]: https://img.shields.io/github/contributors/Warrior2612/Stock-Market-Data-Visualiser.svg?style=for-the-badge
-[contributors-url]: https://github.com/Warrior2612/Stock-Market-Data-Visualiser/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Warrior2612/Stock-Market-Data-Visualiser.svg?style=for-the-badge
-[forks-url]: https://github.com/Warrior2612/Stock-Market-Data-Visualiser/network/members
-[stars-shield]: https://img.shields.io/github/stars/Warrior2612/Stock-Market-Data-Visualiser.svg?style=for-the-badge
-[stars-url]: https://github.com/Warrior2612/Stock-Market-Data-Visualiser/stargazers
-[issues-shield]: https://img.shields.io/github/issues/Warrior2612/Stock-Market-Data-Visualiser.svg?style=for-the-badge
-[issues-url]: https://github.com/Warrior2612/Stock-Market-Data-Visualiser/issues
-[license-shield]: https://img.shields.io/github/license/Warrior2612/Stock-Market-Data-Visualiser?label=license&style=for-the-badge
-[license-url]: https://github.com/Warrior2612/Stock-Market-Data-Visualiser/blob/main/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/Warrior2612/Media-Recommendation-System.svg?style=for-the-badge
+[contributors-url]: https://github.com/Warrior2612/Media-Recommendation-System/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Warrior2612/Media-Recommendation-System.svg?style=for-the-badge
+[forks-url]: https://github.com/Warrior2612/Media-Recommendation-System/network/members
+[stars-shield]: https://img.shields.io/github/stars/Warrior2612/Media-Recommendation-System.svg?style=for-the-badge
+[stars-url]: https://github.com/Warrior2612/Media-Recommendation-System/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Warrior2612/Media-Recommendation-System.svg?style=for-the-badge
+[issues-url]: https://github.com/Warrior2612/Media-Recommendation-System/issues
+[license-shield]: https://img.shields.io/github/license/Warrior2612/Media-Recommendation-System?label=license&style=for-the-badge
+[license-url]: https://github.com/Warrior2612/Media-Recommendation-System/blob/main/LICENSE.txt
 [product-screenshot]: images/screenshot.png
