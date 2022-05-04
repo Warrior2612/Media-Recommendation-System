@@ -35,7 +35,6 @@ based on the rating, tries to improve the recommendations further.
       </ul>
     </li>
     <li><a href="#contributing">Contributions</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
@@ -69,11 +68,6 @@ based on the rating, tries to improve the recommendations further.
 - Pratham Mehta - <a>https://github.com/Warrior2612</a>
 - Manav Modi - <a>https://github.com/manavmodi123</a>
 - Saikrishna Karra - <a>https://github.com/</a>
-  
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
 
 <!-- CONTACT -->
 ## Contact
