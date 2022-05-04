@@ -61,6 +61,9 @@ based on the rating, tries to improve the recommendations further.
 * Javascript
 * Ajax
 
+#### Program Execution Flow
+![Flow][execution-flow]
+
 <!-- CONTRIBUTING -->
 ## Contributions
 - Pratham Mehta - <a>https://github.com/Warrior2612</a>
@@ -92,3 +95,4 @@ Project Link: [https://github.com/Warrior2612/Media-Recommendation-System](https
 [license-url]: https://github.com/Warrior2612/Media-Recommendation-System/blob/main/LICENSE.txt
 [product-screenshot]: images/screenshot.png
 [product-screenshot2]: images/screenshot2.png
+[execution-flow]: images/execution-flow.png
