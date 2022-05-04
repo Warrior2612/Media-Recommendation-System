@@ -91,4 +91,4 @@ Project Link: [https://github.com/Warrior2612/Media-Recommendation-System](https
 [license-shield]: https://img.shields.io/github/license/Warrior2612/Media-Recommendation-System?label=license&style=for-the-badge
 [license-url]: https://github.com/Warrior2612/Media-Recommendation-System/blob/main/LICENSE.txt
 [product-screenshot]: images/screenshot.png
-[product-screenshot]: images/screenshot2.png
+[product-screenshot2]: images/screenshot2.png
