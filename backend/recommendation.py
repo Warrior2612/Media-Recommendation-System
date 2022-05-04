@@ -41,17 +41,21 @@ def contentBasedRecommender(media_index):
 
     return movie_indices
 
+def merge(lst1, lst2):
+    merged_lst = []
+    merged_lst.extend(list((value for value in lst2 if value in lst1)))
+    merged_lst.extend(list((value for value in lst2 if value not in lst1)))  
+    merged_lst.extend(list((value for value in lst1 if value not in lst2)))
+    return merged_lst
+
 def main(media_index):
     global recommended_ids
 
     genre_based = genreBasedRecommender(media_index)
     content_based = contentBasedRecommender(media_index)
 
-    final_list = []
-    final_list.extend(list((value for value in content_based if value in genre_based)))
-    final_list.extend(list((value for value in content_based if value not in genre_based)))  
-    final_list.extend(list((value for value in genre_based[:15] if value not in content_based))) 
-    recommended_ids.extend(final_list)
+    final_list = merge(content_based, genre_based)
+    recommended_ids = merge(recommended_ids, final_list)
     recommended_ids = list(OrderedDict.fromkeys(recommended_ids))
 
 if __name__ == '__main__':

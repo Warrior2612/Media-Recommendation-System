@@ -30,7 +30,8 @@ def recommender():
         if len(liked_ids) != 0:
             for i in liked_ids:
                 backend.recommendation.main(i)
-            flask_website.recommended_ids = backend.recommendation.recommended_ids[::-1]
+            # flask_website.recommended_ids = backend.recommendation.recommended_ids[::-1]
+            flask_website.recommended_ids = backend.recommendation.recommended_ids
         print(backend.recommendation.recommended_ids)
         time.sleep(2)
 
