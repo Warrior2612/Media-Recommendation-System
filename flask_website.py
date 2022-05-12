@@ -84,10 +84,6 @@ def Form():
                 return render_template('form.html')
     return render_template('form.html')
 
-@app.route('/choices')
-def Choices():  
-    return render_template('choices.html')
-
 @app.route('/stream')
 def Stream():
     global varId
