@@ -31,6 +31,9 @@
         <div class="navBar rightBar">
             <a href='/profile'><div class="iconDiv" id="iconDiv6"><i class="fa-solid fa-user fa-2x"></i></div></a>
             <div class="iconDiv" id="iconDiv7"><i class="fa-solid fa-fill fa-2x"></i></div>
+            <div class="iconDiv" id="likeCircle">
+                <i class="fa-solid fa-heart fa-2x"></i>
+            </div>
             <a href='/logout'><div class="iconDiv" id="iconDiv8"><i class="fa-solid fa-right-from-bracket fa-2x"></i></div></a>
         </div>
         <div class="iconBar nextRec" id="nextRec">
@@ -58,7 +61,7 @@
                 </div>
             </div>
         </div>
-        <div class="hiddenContent" id="hiddenContent">
+        <div class="hiddenContent active" id="hiddenContent">
             <div class="hiddenText leftText" id="hiddenText">
                 <div class="hiddenContentDesc">
                     <span class="hiddenTextTitleLeft">Description: </span><br><span id="hidDesc">{{data.iloc[id]['Description']}}</span>
